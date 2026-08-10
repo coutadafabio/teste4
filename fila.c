@@ -36,6 +36,22 @@ produto *criaProduto (int ident, char n[], bool *resultado)
     return novo;
 }
 
+bool verificarProdutosDuplicados (produto *inicio, int idAux)
+{
+    if (inicio == NULL)
+        return false;
+
+    while (inicio != NULL)
+    {
+        if (inicio->dados.id == idAux) 
+            return true;
+
+        inicio = inicio->seguinte;
+    }
+
+    return false;
+}
+
 produto *inserirProduto (produto **inicio, produto *fim, produto *novo, bool *resultado)
 {
     *resultado = true;
@@ -43,6 +59,13 @@ produto *inserirProduto (produto **inicio, produto *fim, produto *novo, bool *re
     if (novo == NULL)
     {
         *resultado = false;
+        return fim;
+    }
+
+    *resultado = verificarProdutosDuplicados (*inicio, novo->dados.id);
+    if (*resultado == true)
+    {
+        *resultado == false;
         return fim;
     }
 
