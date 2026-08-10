@@ -30,7 +30,7 @@ produto *criaProduto (int ident, char n[], bool *resultado)
         return NULL;
 
     novo->dados.id = ident;
-    strcpy (n,novo->dados.nome);
+    strcpy (novo->dados.nome,n);
     novo->seguinte = NULL;
     *resultado = true;
     return novo;
@@ -58,16 +58,19 @@ produto *inserirProduto (produto **inicio, produto *fim, produto *novo, bool *re
 
     if (novo == NULL)
     {
+
+    printf("3\n");
         *resultado = false;
         return fim;
     }
-
     *resultado = verificarProdutosDuplicados (*inicio, novo->dados.id);
     if (*resultado == true)
     {
-        *resultado == false;
+        printf ("4\n");
+        *resultado = false;
         return fim;
     }
+    *resultado = true;
 
     if (fim == NULL)
     {   
@@ -88,7 +91,7 @@ Fila *inserirFila (Fila *controlador, produto *novo, bool *resultado)
     if (controlador == NULL)
         return NULL;
 
-    controlador->fimP = inserirProduto(controlador->inicioP,controlador->fimP,novo,resultado);
+    controlador->fimP = inserirProduto(&(controlador->inicioP),controlador->fimP,novo,resultado);
     if (*resultado == true)
     {
         (controlador->numProdutos)++;
