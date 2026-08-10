@@ -22,4 +22,11 @@ typedef struct Fila{
     struct produto *fimP;
 }Fila;
 
+Fila *criaControlador (bool *resultado);
+produto *criaProduto (int ident, char n[], bool *resultado);
+produto *inserirProduto (produto **inicio, produto *fim, produto *novo, bool *resultado);
+Fila *inserirFila (Fila *controlador, produto *novo, bool *resultado);
+bool mostraFila (Fila *controlador);
+
+
 #endif
