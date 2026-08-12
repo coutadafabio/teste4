@@ -27,6 +27,7 @@ produto *criaProduto (int ident, char n[], bool *resultado);
 produto *inserirProduto (produto **inicio, produto *fim, produto *novo, bool *resultado);
 Fila *inserirFila (Fila *controlador, produto *novo, bool *resultado);
 bool mostraFila (Fila *controlador);
-
+produto *removerProduto (produto *inicio, produtoFicheiro *data, bool *resultado);
+Fila *removerProdutoFila (Fila *controlador, produtoFicheiro *data, bool *resultado);
 
 #endif

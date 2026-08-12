@@ -24,6 +24,7 @@ int main (void){
         printf ("Menu:\n\n");
         printf ("1 - Insere produto\n");
         printf ("2 - Mostra listagem de produtos\n\n");
+        printf ("3 - Processar produto\n");
         printf ("Opcao: ");
         scanf ("%d", &op);
 
@@ -59,6 +60,14 @@ int main (void){
                     printf ("Nao ha produtos para mostrar!\n");
                 
                 break;
+            case 3:
+                produtoFicheiro *data = (produtoFicheiro*)malloc(sizeof(produtoFicheiro));
+                controlador = removerProdutoFila (controlador,data,&resultado);
+                if (resultado == false)
+                    printf("Erro ao processar produto!\n");
+
+                printf("Produto %d com nome %s processado\n", data->id,data->nome);
+                free(data);
             case 0:
                 break;
             }

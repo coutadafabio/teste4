@@ -118,3 +118,33 @@ bool mostraFila (Fila *controlador)
     }
     return true;
 }
+
+produto *removerProduto (produto *inicio, produtoFicheiro *data, bool *resultado)
+{
+    *resultado = false;
+    if (inicio == NULL)
+        return NULL;
+
+    produto *aux = inicio;
+    data->id = aux->dados.id;
+    strcpy (data->nome,aux->dados.nome);
+    inicio = inicio->seguinte;
+    free(aux);
+    *resultado = true;
+    return inicio;
+}
+
+Fila *removerProdutoFila (Fila *controlador, produtoFicheiro *data, bool *resultado)
+{
+    *resultado = false;
+    if (controlador == NULL)
+        return NULL;
+
+    if (controlador->numProdutos == 0)
+        return controlador;
+
+    controlador->inicioP = removerProduto(controlador->inicioP,data,resultado);
+    if (*resultado == true)
+        (controlador->numProdutos)--;
+    return controlador;
+}
