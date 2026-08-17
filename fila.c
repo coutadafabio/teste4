@@ -92,3 +92,22 @@ bool mostraFila (Fila *controlador)
     }
     return true;
 }
+
+bool escreverFicheiroFila (Fila *controlador, char caminho[])
+{
+    if (controlador == NULL)
+        return false;
+
+    if (controlador->numProdutos == 0)
+        return false;
+
+    FILE *f = fopen (caminho,"wb");
+    if (f == NULL)
+        return NULL;
+
+    produto *aux = controlador->inicioP;
+    while (aux != NULL)
+    {
+        fprintf()
+    }
+}
